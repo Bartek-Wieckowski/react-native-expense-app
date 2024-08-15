@@ -9,7 +9,6 @@ import RecentExpenses from './screens/RecentExpenses';
 import AllExpenses from './screens/AllExpenses';
 import { GlobalStyles } from './constants/styles';
 import IconButton from './components/ui/IconButton';
-IconButton;
 
 const Stack = createNativeStackNavigator();
 const BottomTabs = createBottomTabNavigator();
@@ -71,7 +70,6 @@ export default function App() {
             name="ManageExpense"
             component={ManageExpense}
             options={{
-              title: 'Manage Expenses',
               presentation: 'modal',
             }}
           />
