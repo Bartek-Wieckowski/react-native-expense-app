@@ -2,10 +2,13 @@ const { default: axios } = require('axios');
 
 const BACKEND_URL = 'https://bart-testing-default-rtdb.europe-west1.firebasedatabase.app';
 
-export function storeExpense(expenseData) {
-  axios.post(`${BACKEND_URL}/expenses.json`, { expenseData });
+export async function storeExpense(expenseData) {
+  const res = await axios.post(`${BACKEND_URL}/expenses.json`, expenseData);
+  const id = res.data.name;
+
+  return id;
 }
-export async function fetchExpense() {
+export async function fetchExpenses() {
   const res = await axios.get(`${BACKEND_URL}/expenses.json`);
 
   const expenses = [];
@@ -21,4 +24,12 @@ export async function fetchExpense() {
   }
 
   return expenses;
+}
+
+export function updateExpense(id, expenseData) {
+  return axios.put(BACKEND_URL + `/expenses/${id}.json`, expenseData);
+}
+
+export function deleteExpense(id) {
+  return axios.delete(BACKEND_URL + `/expenses/${id}.json`);
 }
